@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // Das User-Schema für die Datenbank
-const userShema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -49,7 +49,7 @@ userSchema.pre("save", async function(next){
 userSchema.method.comparePassword = async function(candidatePassword, next) {
     try {
         // Vergleich von Übvergebenen Passwort und Passwort des Users in der Datenbank
-        // bcrypt.compare gibt True/False zurück
+        // bcrypt.compare gibt true/false zurück
         let isMatch = await bcrypt.compare(candidatePassword, this.password);
         return isMatch;
     } catch(err) {
@@ -61,5 +61,5 @@ userSchema.method.comparePassword = async function(candidatePassword, next) {
 // Jedes erstellte Objekt von diesem Schema wird durch ein Model erstellt
 // https://mongoosejs.com/docs/models.html
 const User = mongoose.model("User", userSchema);
-module.exports = User
+module.exports = User;
 

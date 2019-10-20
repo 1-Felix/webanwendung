@@ -14,5 +14,8 @@ mongoose.Promise = Promise;
 // Mit einer Datenbank verbinden
 mongoose.connect("mongodb://localhost/webandwendung", {
     keepAlive: true,
-    useMongoClient: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
+
+module.exports.User = require("./user");
