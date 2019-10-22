@@ -21,7 +21,13 @@ const userSchema = new mongoose.Schema({
     },
     profileImageUrl: {
         type: String
-    }
+    },
+    // Ein User hat eine Referanz auf alle seine Messages/Nachrichten
+    // => Array von seinen Nachrichten
+    messages: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Message"
+    }]
 });
 
 // "Pre save hook" Before ein Document (= Instanz von einem Model => User) in mongoose abgespeichert wird, 

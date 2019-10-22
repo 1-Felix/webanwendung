@@ -19,3 +19,4 @@ mongoose.connect("mongodb://localhost/webandwendung", {
 });
 
 module.exports.User = require("./user");
+module.exports.Message = require("./message");
