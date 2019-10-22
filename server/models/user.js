@@ -46,7 +46,7 @@ userSchema.pre("save", async function(next){
 
 // Diese Methode ist nachher für den Login nützlich damit man 
 // schauen kann ob das eingegebene Passwort das richtige ist.
-userSchema.method.comparePassword = async function(candidatePassword, next) {
+userSchema.methods.comparePassword = async function(candidatePassword, next) {
     try {
         // Vergleich von Übvergebenen Passwort und Passwort des Users in der Datenbank
         // bcrypt.compare gibt true/false zurück
