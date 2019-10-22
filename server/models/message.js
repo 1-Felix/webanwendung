@@ -12,7 +12,7 @@ const messageSchema = new mongoose.Schema({
         maxLength: 160
     },
     user: {
-        type: mongoose.Schema.Types.ObejectId,
+        type: mongoose.Schema.Types.ObjectId,
         // Hier wird zu dem User-Model referenziert
         ref: "User"
     }

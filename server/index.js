@@ -7,6 +7,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth");
+const messagesRoutes = require("./routes/messages");
 
 const errorHandler = require("./handlers/error");
 
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 // Wann immer ein Request an /api/auth/ eingeht
 // verwende die "authRoutes"
 app.use("/api/auth", authRoutes);
+// :id ist ein Platzhalter für die User-Id
+app.use("/api/users/:id/messages", messagesRoutes);
 
 
 // einfacher Error-Handler falls keine Seite gefunden wird (404)
