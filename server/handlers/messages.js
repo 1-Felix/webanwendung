@@ -31,9 +31,35 @@ exports.createMessage = async function(req, res, next) {
 };
 
 exports.getMessage = async function(req, res, next) {
-    
+    try {
+        // Die Nachricht wird anhand der ID in der URL gefunden 
+        // /api/users/:id/messages/:message_id
+        let message = await db.Message.findById(req.params.message_id);
+        return res.status(200).json(message);
+    } catch (err) {
+        return next(err);
+    }
 };
 
 exports.deleteMessage = async function(req, res, next) {
-    
+    try {
+        let foundMessage = await db.Message.findById(req.params.message_id);
+        await foundMessage.remove();
+        return res.status(200).json(foundMessage);
+    } catch (err) {
+        return next(err);
+    }
 };
+
+exports.updateMessage = async function(req, res, next) {
+    try {
+        // https://medium.com/@yugagrawal95/mongoose-mongodb-functions-for-crud-application-1f54d74f1b34
+        // {new:true} damit die modifizierte Nachricht in der Response zurückkommt
+        let updatedMessage = await db.Message.findByIdAndUpdate(req.params.message_id, {$set:{text: req.body.text}}, {new:true});
+        // await foundMessage.update({_id: req.params.message_id}, {$set:{text: req.body.text}});
+        // foundMessage.save();
+        return res.status(200).json(updatedMessage);
+    } catch (err) {
+        return next(err);
+    }
+}

@@ -24,6 +24,21 @@ app.use("/api/auth", authRoutes);
 // ob der User eingeloggt ist und ob er die Rechte hat um eine Nachricht zu senden
 app.use("/api/users/:id/messages", loginRequired, ensureCorrectUser, messagesRoutes);
 
+// Diese URL kann alle Nachrichten anzeigen, wenn der User eingeloggt ist.
+app.get("/api/messages", loginRequired, async function(req, res, next){
+    try {
+        let messages = await db.Messsage.find()
+        .sort({createdAt: "desc"})
+        // Damit ich auch Profilbild + Nutzername dazu anzeigen kann.
+        .populate("user", {
+            username:true,
+            profileImageUrl: true
+        });
+        return res.status(200).json(messages);
+    } catch (err) {
+        return next(err);
+    }
+});
 
 // einfacher Error-Handler falls keine Seite gefunden wird (404)
 app.use(function (req, res, next) {

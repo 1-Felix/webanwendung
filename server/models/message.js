@@ -16,11 +16,15 @@ const messageSchema = new mongoose.Schema({
         // Hier wird zu dem User-Model referenziert
         ref: "User"
     }
+}, {
+    // fügt ein "createtAt"-Timestamp hinzu
+    // Hilft die Nachrichten zu sortieren
+    timestamps: true
 });
 
 // Wieder ein pre-Hook -> Bevor die Nachricht gelöscht wird, 
 // muss die Nachricht-Refernz die der User besitzt auch gelöscht werden
-messageSchema.pre("remove", async function(next){
+messageSchema.pre("remove", async function (next) {
     try {
         // Schritt 1: Den User finden
         // "this" refreziert auf das spezifische Document

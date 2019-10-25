@@ -40,7 +40,7 @@ exports.loginRequired = function (req, res, next) {
 exports.ensureCorrectUser = function (req, res, next) {
     try {
         const token = req.headers.authorization.split(" ")[1];
-        jwt.verify(toke, process.env.SECRET_KEY, function (err, payload) {
+        jwt.verify(token, process.env.SECRET_KEY, function (err, payload) {
             // Die ID des Users, ist sowohl im Token-Payload als ich in der Request-URL
             // Wenn diese übereinstimmten, ist der User authorisiert.
             if (payload && payload.id === req.params.id) {
