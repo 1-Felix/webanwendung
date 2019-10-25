@@ -8,8 +8,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth");
 const messagesRoutes = require("./routes/messages");
-
 const errorHandler = require("./handlers/error");
+const { loginRequired, ensureCorrectUser } = require("./middleware/auth");
 
 const PORT = 8081;
 
@@ -20,7 +20,9 @@ app.use(bodyParser.json());
 // verwende die "authRoutes"
 app.use("/api/auth", authRoutes);
 // :id ist ein Platzhalter für die User-Id
-app.use("/api/users/:id/messages", messagesRoutes);
+// "loginRequired" & "ensureCorrectUser" sind Middelware die prüfen 
+// ob der User eingeloggt ist und ob er die Rechte hat um eine Nachricht zu senden
+app.use("/api/users/:id/messages", loginRequired, ensureCorrectUser, messagesRoutes);
 
 
 // einfacher Error-Handler falls keine Seite gefunden wird (404)

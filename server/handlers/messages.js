@@ -6,7 +6,7 @@ exports.createMessage = async function(req, res, next) {
         // Eine Nachricht erstellen
         let message = await db.Message.create({
             // Beide Parameter sind im Schema vorgegeben
-            // Der Text aus dem Request-Body
+            // Der Text kommt aus dem Request-Body
             text: req.body.text,
             // Die Referenz zu dem User, hole ich aus der Request-URL
             // Beispiel api/users/:id/messages -> id wird in dem Message Objekt gespeichert
