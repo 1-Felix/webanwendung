@@ -1,0 +1,46 @@
+version: "2.0"
+services:
+    client:
+        image: webapp-client
+        restart: always
+        ports:
+            - "3000:3000"
+        working_dir: /client
+        volumes:
+            - ./client:/client
+            - /client/node_modules
+        links:
+            - server
+        networks:
+            - webappnetwork
+        build: ./client 
+    server:
+        image: webapp-server
+        restart: always
+        ports:
+            - "9000:9000"
+        volumes:
+            - ./server:/server
+            - /server/node_modules
+        depends_on:
+            - mongodb
+        networks:
+            - webappnetwork
+        build: ./server
+    mongodb:
+        image: mongo:latest
+        restart: always
+        container_name: mongodb
+        volumes:
+            - mongodata:/data/db
+        ports:
+            - 27017:27017
+        command: mongod --noauth
+        networks:
+            - webappnetwork
+volumes:
+    mongodata:
+networks:
+    webappnetwork:
+        driver: bridge
+

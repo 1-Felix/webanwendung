@@ -4,12 +4,13 @@
   "description": "Dies ist mein Server-Teil von meiner Webanwendung, die ich für das Indivudalprojekt an der DHBW Mosbach erstellt habe.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Felix Keller",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

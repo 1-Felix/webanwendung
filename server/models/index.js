@@ -12,10 +12,10 @@ mongoose.set("debug", true);
 // https://mongoosejs.com/docs/promises.html
 mongoose.Promise = Promise;
 // Mit einer Datenbank verbinden
-mongoose.connect("mongodb://localhost/webandwendung", {
+mongoose.connect("mongodb://mongodb/webandwendung", {
     keepAlive: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: false
 });
 
 module.exports.User = require("./user");
