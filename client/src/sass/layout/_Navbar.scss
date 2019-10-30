@@ -1,0 +1,37 @@
+.navbar {
+	margin-bottom: 1rem;
+
+	a {
+		font-weight: bold;
+		color: $color-white-medium-emphasis;
+
+		&:hover {
+			color: $color-white-high-emphasis;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+}
+
+.navbar-brand>img {
+	display: inline-block;
+	width: 15px;
+}
+
+ul.nav.navbar-nav li {
+	margin: 0 0.5rem;
+}
+
+.onboarding>.navbar {
+	background-color: $color-grey-light;
+}
+
+/* https://css-tricks.com/scale-svg/ */
+.logo-svg {
+  width: 100%;
+  background-image: url(./images/logo.svg);
+  background-size: cover;
+  height: 0;
+  padding: 0; /* reset */
+  padding-bottom: 100%;
+}

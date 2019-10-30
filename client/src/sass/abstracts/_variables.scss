@@ -1,0 +1,18 @@
+// Farben, inspiriert von https://material.io/design/color/dark-theme.html#custom-application
+$color-white: #fff; // Text auf Background Farbe
+$color-black: #000; // Auf Error-Farbe
+$color-white-high-emphasis: opacify($color-white, .87);
+$color-white-medium-emphasis: opacify($color-white, .60); // Hint Text
+$color-white-disabled: opacify($color-white, .38); // Disabled Text
+
+$color-grey-dark: #121212; // Primary Surface + Background Color (von Material Design)
+$color-grey-light: #1E1E1E;
+$color-primary: #BB86FC;
+$color-primary-variant: #3700B3;
+$color-Secondary: #03DAC5;
+$color-error: #CF6679;
+
+
+
+
+

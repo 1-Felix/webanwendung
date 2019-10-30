@@ -1,46 +1,22 @@
-body {
-  background-color: #222;
-}
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+*, *::after, *::before { margin: 0; padding: 0; font: inherit; -webkit-box-sizing: inherit; box-sizing: inherit; vertical-align: baseline; }
 
-/* Navbar */
-.navbar {
-  margin-bottom: 1rem;
-}
+body { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-.navbar a {
-  font-weight: bold;
-  color: #ddd
-}
+body { font-family: "Lato", sans-serif; font-weight: 400; /* font-style: 16px; */ line-height: 1.7; color: white; background-color: #121212; }
 
-.navbar a:hover {
-  color: #fff;
-  text-decoration: underline;
-  cursor: pointer
-}
+.navbar { margin-bottom: 1rem; }
 
-.navbar-brand > img {
-  display: inline-block;
-  width: 20px;
-  border-radius: 2px;
-  margin-bottom: 5px;
-  margin-right: 2px;
-}
+.navbar a { font-weight: bold; color: white; }
 
-ul.nav.navbar-nav li {
-  margin: 0 0.5rem;
-}
+.navbar a:hover { color: white; text-decoration: underline; cursor: pointer; }
 
-.onboarding > .navbar {
-  background-color: #333;
-}
+.navbar-brand > img { display: inline-block; width: 15px; }
+
+ul.nav.navbar-nav li { margin: 0 0.5rem; }
+
+.onboarding > .navbar { background-color: #1E1E1E; }
 
 /* https://css-tricks.com/scale-svg/ */
-.logo-svg {
-  width: 100%;
-  background-image: url(./images/logo.svg);
-  background-size: cover;
-  height: 0;
-  padding: 0; /* reset */
-  padding-bottom: 100%;
-}
-
+.logo-svg { width: 100%; background-image: url(./images/logo.svg); background-size: cover; height: 0; padding: 0; /* reset */ padding-bottom: 100%; }
+/*# sourceMappingURL=index.css.map */
