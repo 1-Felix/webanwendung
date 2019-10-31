@@ -1,0 +1,85 @@
+.home-hero{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+  text-align: center;
+  padding: 1rem;
+  background: url('../../images/hero.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.header-text {
+  font-size: 3rem;
+  line-height: .85;
+  position: relative;
+  left: -20%;
+}
+
+.header-subtitle {
+  font-size: 3rem;
+  line-height: .85;
+  position: relative;
+  left: 20%;
+}
+
+.header-text > span {
+  display: block;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+span:not(.light) {
+  opacity: 0;
+  animation: flashText 3s ease-out alternate infinite;
+}
+
+span.light {
+  position: relative;
+  display: inline-block;
+  left: -29%;
+  
+  
+  &:before {
+    position: absolute;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    height: 120%;
+    background: #fff;
+    filter: blur(10px);
+    content: "";
+    opacity: 0;
+    animation: flash 1s cubic-bezier(1.000, 1.650, 0.000, -0.600) alternate infinite;
+  }
+}
+
+@keyframes flash{
+  0% {opacity: 0}
+  50%,
+  66% {opacity: 0.5}
+  100% {opacity: 0.8}
+}
+
+@keyframes flashText {
+  0% {opacity: 1;}
+  30%,
+  50% {opacity: 1}
+  80%,
+  100% {opacity: 1}
+}
+
+
+.header-subtitle > span {
+  display: block;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+

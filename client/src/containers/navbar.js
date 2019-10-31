@@ -12,7 +12,7 @@ class Navbar extends Component {
             https://knowbody.github.io/react-router-docs/api/Link.html */}
             <Link to="/" className="navbar-brand">
               <div style={{ width: 2.5 + "rem" }}>
-                <div class="logo-svg"></div>
+                <div className="logo-svg"></div>
               </div>
             </Link>
           </div>
