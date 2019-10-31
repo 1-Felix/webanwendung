@@ -3,6 +3,8 @@ import {Provider} from "react-redux";
 import {configureStore} from "../store"
 // Um von Seite zu Seite zu navigieren
 import {BrowserRouter as Router} from "react-router-dom";
+import Navbar from "./Navbar"
+import Main from "./Main";
 
 
 const store = configureStore();
@@ -10,7 +12,8 @@ const store = configureStore();
 const App = () => (
   <Provider store={store}>
     <Router>
-      <div>Hallo Welt?</div>
+        <Navbar />
+        <Main />
     </Router>
   </Provider>
 )

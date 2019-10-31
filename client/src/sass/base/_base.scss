@@ -1,0 +1,46 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	font: inherit;
+	box-sizing: inherit;
+	vertical-align: baseline;
+}
+
+// html {
+// 	/* Default font size = 10px for easy "px to rem conversion" */
+// 	font-size: 62.5%; /* if default font-size is 16px, 62.5% is 10px */
+
+
+// 	@include respond(tab-land) { // width < 1200 
+// 		font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+// 	}
+
+// 	@include respond(tab-port) { // width < 900 
+// 		font-size: 50%; // 1rem = 8px, 8/16 = 50%
+// 	}
+
+// 	@include respond(big-desktop) { // width > 1800 
+// 		font-size: 75%; // 1rem = 12px, 12/16 = 75%
+// 	}
+// }
+
+// /* HTML5 display-role reset for older browsers */
+// article, aside, details, figcaption, figure,
+// footer, header, hgroup, menu, nav, section, main {
+// 	display: block;
+// }
+
+html{
+	background-color: $color-grey-dark;
+}
+
+body {
+	box-sizing: border-box;
+	background-color: $color-grey-dark;
+}
+
+#root {
+	background-color: $color-grey-dark;
+}
