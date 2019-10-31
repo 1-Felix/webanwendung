@@ -32,6 +32,15 @@
 // 	display: block;
 // }
 
+html{
+	background-color: $color-grey-dark;
+}
+
 body {
 	box-sizing: border-box;
+	background-color: $color-grey-dark;
+}
+
+#root {
+	background-color: $color-grey-dark;
 }

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 export default class AuthForm extends Component {
   constructor(props) {
+    super(props);
     this.state = {
       email: "",
       username: "",
@@ -11,9 +12,17 @@ export default class AuthForm extends Component {
     };
   }
 
+  // Damit die Input-Felder korrekt funktionieren
+  // https://stackoverflow.com/questions/1184123/is-it-possible-to-add-dynamically-named-properties-to-javascript-object?rq=1
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   render() {
     const { email, username, password, profileImageUrl } = this.state;
-    const { heading, buttonText } = this.props;
+    const { heading, buttonText, signup } = this.props;
     return (
       <div>
         <div className="row justify-content-md-center text-center">
@@ -37,6 +46,29 @@ export default class AuthForm extends Component {
                 className="form-control"
                 onChange={this.handleChange}
               />
+              {/* Wenn props.signup existiert, dann zeige die zwei weiteren Input-Felder an */}
+              {signup && (
+                <div>
+                  <label htmlFor="Username">Username:</label>
+                  <input
+                    type="text"
+                    name="Username"
+                    id="Username"
+                    className="form-control"
+                    onChange={this.handleChange}
+                    value={username}
+                  />
+                  <label htmlFor="image-url">Image-URL:</label>
+                  <input
+                    type="text"
+                    name="image-url"
+                    id="image-url"
+                    className="form-control"
+                    onChange={this.handleChange}
+                    value={profileImageUrl}
+                  />
+                </div>
+              )}
             </form>
           </div>
         </div>

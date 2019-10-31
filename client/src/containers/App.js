@@ -12,10 +12,8 @@ const store = configureStore();
 const App = () => (
   <Provider store={store}>
     <Router>
-      <div className="onboarding">
         <Navbar />
         <Main />
-      </div>
     </Router>
   </Provider>
 )
