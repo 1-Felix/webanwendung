@@ -20,9 +20,18 @@ export default class AuthForm extends Component {
     });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    // auhthTpe ist nützlich um zu entscheiden was für ein Request abgeschickt werden soll
+    const authType = this.props.signUp ? "signup" : "signin";
+    this.props.onAuth(authType, this.state).then(() => {
+      console.log("logged in")
+    })
+  }
+
   render() {
     const { email, username, password, profileImageUrl } = this.state;
-    const { heading, buttonText, signup } = this.props;
+    const { heading, buttonText, signUp } = this.props;
     return (
       <div>
         <div className="row justify-content-md-center text-center">
@@ -47,21 +56,21 @@ export default class AuthForm extends Component {
                 onChange={this.handleChange}
               />
               {/* Wenn props.signup existiert, dann zeige die zwei weiteren Input-Felder an */}
-              {signup && (
+              {signUp && (
                 <div>
                   <label htmlFor="Username">Username:</label>
                   <input
                     type="text"
-                    name="Username"
+                    name="username"
                     id="Username"
                     className="form-control"
-                    onChange={this.handleChange}
                     value={username}
+                    onChange={this.handleChange}
                   />
                   <label htmlFor="image-url">Image-URL:</label>
                   <input
                     type="text"
-                    name="image-url"
+                    name="profileImageUrl"
                     id="image-url"
                     className="form-control"
                     onChange={this.handleChange}
@@ -69,6 +78,9 @@ export default class AuthForm extends Component {
                   />
                 </div>
               )}
+              <button type="submit" className="btn btn-dark btn-block btn-lg mt-3">
+                {buttonText}
+              </button>
             </form>
           </div>
         </div>
