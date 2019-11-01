@@ -20,8 +20,8 @@ RUN npm install --quiet --production
 # Copy the current directory contents into the container at /server
 COPY . /server/
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+# Make port 9001 available to the world outside this container
+EXPOSE 9000
 
 # Run the app when the container launches
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
