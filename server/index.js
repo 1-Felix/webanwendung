@@ -11,7 +11,7 @@ const messagesRoutes = require("./routes/messages");
 const errorHandler = require("./handlers/error");
 const { loginRequired, ensureCorrectUser } = require("./middleware/auth");
 
-const PORT = 9000;
+const PORT = 9001;
 
 app.use(cors());
 app.use(bodyParser.json());

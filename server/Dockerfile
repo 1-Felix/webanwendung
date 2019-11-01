@@ -12,7 +12,7 @@ COPY package*.json /server/
 #   g++ gcc libgcc libstdc++ linux-headers autoconf automake make nasm python git && \
 #   npm install --quiet node-gyp -g
 # install dependencies
-RUN npm install
+RUN npm install --quiet --production
 
 # Weil es Bcrypt immer noch Probleme macht...
 # RUN npm rebuild bcrypt --build-from-source .

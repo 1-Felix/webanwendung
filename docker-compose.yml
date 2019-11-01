@@ -18,7 +18,7 @@ services:
         image: webapp-server
         restart: always
         ports:
-            - "9000:9000"
+            - "9001:9001"
         volumes:
             - ./server:/server
             - /server/node_modules
