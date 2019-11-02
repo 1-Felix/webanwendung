@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import Main from "./Main";
 import { setAuhorizationToken, setCurrentUser } from "../store/actions/auth";
 import currentUser from "../store/reducers/currentUser";
-import jwtDecode from "jwt-deode";
+import jwtDecode from "jwt-decode";
 
 const store = configureStore();
 
