@@ -11,6 +11,15 @@ export function setCurrentUser(user) {
   };
 }
 
+export function logout(){
+  return dispatch => {
+    // Der User-Token wird im LocalStorage gelöscht
+    localStorage.clear();
+    // Der currentUser wird auf ein leere Objekt gesetzt
+    dispatch(setCurrentUser({}));
+  }
+}
+
 // Type ist entweder "signup" oder "signin"
 // userData kommen vom Request rein
 export function authUser(type, userData) {
