@@ -22,7 +22,7 @@ class Navbar extends Component {
             </Link>
           </div>
           {this.props.currentUser.isAuthenticated ? (
-            <ul className="nav-navbar-nav navbar-right">
+            <ul className="nav navbar-nav navbar-right">
               <li>
                 <Link
                   to={`/users/${this.props.currentUser.user.id}/messages/new`}
