@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchMessages } from "../store/actions/messages";
+import { fetchMessages, removeMessage, updateMessage } from "../store/actions/messages";
 import MessageItem from "../components/MessageItem";
+import { setCurrentUser } from "../store/actions/auth";
 
 class MessageList extends Component {
   componentDidMount() {
@@ -9,7 +10,7 @@ class MessageList extends Component {
   }
 
   render() {
-    const { messages } = this.props;
+    const { messages, removeMessage, currentUser } = this.props;
     let MessageList = messages.map(m => (
       // Jede message wird auf dem Server mit einer User-Referenz versehen
       // Desewegen habe ich hier Zugriff auf m.user.username
@@ -17,8 +18,12 @@ class MessageList extends Component {
         key={m._id}
         date={m.createAt}
         text={m.text}
+        messageId={m._id}
+        userId={m.user._id}
         username={m.user.username}
         profileImageUrl={m.user.profileImageUrl}
+        removeMessage={removeMessage.bind(this, m.user._id, m._id)}
+        isCorrectUser={currentUser === m.user._id}
       />
     ));
     return (
@@ -35,11 +40,12 @@ class MessageList extends Component {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    currentUser: state.currentUser.user.id
   };
 }
 
 export default connect(
   mapStateToProps,
-  { fetchMessages }
+  { fetchMessages, removeMessage, updateMessage }
 )(MessageList);

@@ -19,7 +19,6 @@ if (localStorage.jwtToken) {
   try {
     // jwtDecode gibt den Payload (also die User-Daten) zurück
     // Diese werden anhand des Tokens im localStorage dekodiert.
-    debugger
     store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)))
   } 
   // Wenn der Token invalide ist, wird der User ausgeloggt.

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createNewMessage } from "../store/actions/messages";
+import { createNewMessage, updateMessage } from "../store/actions/messages";
 
 class MessageForm extends Component {
   constructor(props) {
@@ -11,10 +11,16 @@ class MessageForm extends Component {
   }
 
   // Das wird ausgefügrt wenn die Nachricht submittet wird
-  handleNewMessage = e => {
+  handleNewSubmit = e => {
     e.preventDefault();
-    // Führt den POST-Request aus, um eine Nachricht zu erstellen
-    this.props.createNewMessage(this.state.message);
+    // Check ob man eine Nachricht updaten, oder neu erstellen möchte
+    if(this.props.match.params.message_id){
+      // Führt den PUT-Request aus, um eine Nachricht zu ändern
+      this.props.updateMessage(this.props.match.params.id, this.props.match.params.message_id, this.state.message);
+    } else {
+      // Führt den POST-Request aus, um eine Nachricht zu erstellen
+      this.props.createNewMessage(this.state.message);
+    }
     this.setState({message: ""});
     this.props.history.push("/")
 
@@ -22,17 +28,17 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleNewMessage}>
-        {this.props.errors.message && (
-          <div className="alert alert-danger">{this.props.errors}</div>
-        )}
+      <form onSubmit={this.handleNewSubmit}>
+        {/* {this.props.errors.message && (
+          <div className="alert alert-danger">{this.props.errors.message}</div>
+        )} */}
         <input
           type="text"
           className="form-control"
           value={this.state.message}
           onChange={e => this.setState({message: e.target.value})}
         />
-        <button type="submit" className="btn btn-success pull-right">
+        <button type="submit" className="btn btn-dark">
             Submit my Idea
         </button>
       </form>
@@ -48,5 +54,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { createNewMessage }
+  { createNewMessage, updateMessage }
 )(MessageForm);

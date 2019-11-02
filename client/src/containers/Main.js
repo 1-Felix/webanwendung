@@ -7,7 +7,7 @@ import AuthForm from "../components/AuthForm";
 import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
 import withAuth from "../hocs/withAuth";
-import MessageForm from "../containers/MessageForm"
+import MessageForm from "../containers/MessageForm";
 
 
 const Main = props => {
@@ -56,6 +56,7 @@ const Main = props => {
         />
         {/* Wird nur agzeigt wenn der User eingeloggt ist  */}
         <Route path="/users/:id/messages/new" component={withAuth(MessageForm)} />
+        <Route path="/users/:id/messages/:message_id/update" component={withAuth(MessageForm)} />
       </Switch>
     </div>
   );
