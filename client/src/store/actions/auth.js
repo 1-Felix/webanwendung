@@ -1,5 +1,7 @@
 import { apiCall } from "../../services/api";
 import { SET_CURRENT_USER } from "../actionTypes";
+import { addError, removeError } from "./errors";
+
 
 export function setCurrentUser(user) {
   // Das wird an Reducer gesendet
@@ -23,7 +25,15 @@ export function authUser(type, userData) {
           // Hier wird der User im Redux-Store erstellt
           // damit das Front-End etwas mit den Daten anfangen kann
           dispatch(setCurrentUser(user));
+          // Wenn noch vorherige Erros da sind
+          dispatch(removeError());
           resolve();
+        })
+        .catch(err => {
+          // Wenn es ein Error gibt
+          // err.message kommt vom Server im Error-Objekt<
+          dispatch(addError(err.message));
+          reject(); // Wenn API Aufruf fehlschlägt 
         });
     });
   };

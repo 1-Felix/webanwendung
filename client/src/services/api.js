@@ -1,6 +1,10 @@
 // Die Logik um mit dem Backend zu kommunizieren
 import axios from "axios";
 
+// Ein Wrapper um den axios API Call, der Errors etc formatiert
+// method -> der HTTTP-Request-Typ (z.b. POST/GET)
+// path -> Der Pfad / Endpoint
+// data (optional) Daten in JSON form für POST Requests
 export function apiCall(method, path, data) {
   return new Promise((resolve, recject) => {
     // axios[method] gibt eine Methode zurück
