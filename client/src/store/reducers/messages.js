@@ -1,6 +1,6 @@
 import {LOAD_MESSAGES, REMOVE_MESSAGES} from "../actionTypes";
 
-export default (state = [], action) => {
+const message = (state = [], action) => {
     switch(action.type){
         case LOAD_MESSAGES:
             // Gibt eine Kopie von allen Messages zurück
@@ -9,3 +9,5 @@ export default (state = [], action) => {
                 return state;
     }
 }
+
+export default message;

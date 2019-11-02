@@ -20,7 +20,7 @@ export function apiCall(method, path, data) {
     // axios[method] gibt eine Methode zurück
     // Diese wird mit (path, data) aufgerufen, wenn das abgeschlossen ist,
     // wird eine Funtion aufgerufen, die response von der vorherigen Methode übernimmt
-    return axios[method](path, data).then(res => {
+    return axios[method.toLowerCase()](path, data).then(res => {
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
       return resolve(res.data)
     }).catch(err => {
