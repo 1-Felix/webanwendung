@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchMessages, removeMessage, updateMessage } from "../store/actions/messages";
 import MessageItem from "../components/MessageItem";
-import { setCurrentUser } from "../store/actions/auth";
 
 class MessageList extends Component {
   componentDidMount() {

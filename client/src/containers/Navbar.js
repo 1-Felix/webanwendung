@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {logout} from "../store/actions/auth";
+import { logout } from "../store/actions/auth";
+import Typical from "react-typical";
 
 class Navbar extends Component {
   logout = e => {
@@ -20,6 +21,38 @@ class Navbar extends Component {
                 <div className="logo-svg"></div>
               </div>
             </Link>
+          </div>
+          <div className="pt-3">
+            <p>
+              {this.props.currentUser.isAuthenticated ? (
+                <Typical
+                  steps={[
+                    "You made it! You are now logged in. 🔒",
+                    2000,
+                    `You're username is ${this.props.currentUser.user.username}. 👀`,
+                    1500,
+                    "What a great choice! 😊",
+                    800,
+                    "You can now write, edit and delete your messages. ✏", 500
+                  ]}
+                />
+              ) : (
+                <Typical
+                  steps={[
+                    " ",
+                    5000,
+                    "Hey there! 😃",
+                    1000,
+                    "I'm Felix Keller.",
+                    500,
+                    "This app was developed as part of a project at the DHBW-Mosbach",
+                    400,
+                    "Sign up now, to discover all the functionalities 🌈",
+                    1100
+                  ]}
+                />
+              )}
+            </p>
           </div>
           {this.props.currentUser.isAuthenticated ? (
             <ul className="nav navbar-nav navbar-right">
