@@ -11,13 +11,13 @@ export default function withAuth(ComponentToBeRendered) {
   class Authenticate extends Component {
     componentWillMount() {
       if (!this.props.isAuthenticated) {
-        this.props.history("/signup");
+        this.props.history.push("/signup");
       }
     }
     // Wenn sich State ändert, muss auch gecheckt werden, ob der User (immernoch) eingeloggt ist.
     componentWillUpdate(nextProps) {
       if (!nextProps.props.isAuthenticated) {
-        this.props.history("/signup");
+        this.props.history.push("/signup");
       }
     }
     render() {

@@ -11,11 +11,19 @@ export const fetchMessages = () => {
   return dispatch => {
     // Diese API Call funktioniert nur, wenn man eingeloggt ist
     return apiCall("get", "/api/messages")
-    .then(res => {
-      dispatch(loadMessages(res));
-    })
-    .catch(err => { 
-      dispatch(addError(err.message));
-    });
+      .then(res => {
+        dispatch(loadMessages(res));
+      })
+      .catch(err => {
+        dispatch(addError(err.message));
+      });
   };
+};
+
+export const createNewMessage = text => (dispatch, getState) => {
+  let { currentUser } = getState();
+  const id = currentUser.user.id;
+  return apiCall("post", `/api/users/${id}/messages`, { text })
+    .then(res => {})
+    .catch(err => dispatch(addError(err.message)));
 };

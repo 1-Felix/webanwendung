@@ -11,10 +11,10 @@ const MessageItem = ({ date, profileImageUrl, text, username }) => (
         alt={username}
         height="100"
         width="100"
-        classname="timeline-image"
+        className="timeline-image"
       />
       <div className="message-area">
-        <Link to="/">@{username} &nbsp</Link>
+        <Link to="/">@{username} </Link>
         <span className="text-muted">
           <Moment className="text-muted" format="Do MMM YYYY">
             {date}
