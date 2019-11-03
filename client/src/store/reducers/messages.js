@@ -10,7 +10,7 @@ const message = (state = [], action) => {
       // Gibt eine Kopie von allen Messages zurück
       return [...action.messages];
     case REMOVE_MESSAGE:
-      return state.filter(message => message._id != action.id)
+      return state.filter(message => message._id !== action.id)
     case UPDATE_MESSAGE:
         return [...action.messages]
     default:

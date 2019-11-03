@@ -1,6 +1,6 @@
 // Behinhaltet die Routing-Logik
 import React from "react";
-import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Homepage from "../components/Homepage";
 import AuthForm from "../components/AuthForm";
@@ -75,7 +75,7 @@ function mapStateToProps(state) {
 }
 
 // Erlaubt es auf die Props vom Router für die anderen Komponenten zugänglich zu machen
-// So etwas wie das History-Objekt (für Redirect) ist dann verfügbar
+// So etwas wie das History-Objekt ist dann verfügbar
 export default withRouter(
   connect(
     mapStateToProps,
