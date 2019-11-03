@@ -1,9 +1,11 @@
 #messages .list-group-item {
-    display: flex;
-    align-items: flex-start;
-    padding: 7px 20px 12px;
+    // display: flex;
+    // align-items: flex-start;
+    // padding: 7px 20px 12px;
+    background-color: $color-grey-light;
 }
 
 #messages:not(.no-hover) .list-group-item:hover {
-    background-color: $color-white-medium-emphasis;
+    background-color: lighten($color: $color-grey-light, $amount: 3); 
 }
+

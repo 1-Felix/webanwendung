@@ -23,7 +23,7 @@ class Navbar extends Component {
             </Link>
           </div>
           <div className="pt-3">
-            <p>
+            
               {this.props.currentUser.isAuthenticated ? (
                 <Typical
                   steps={[
@@ -52,7 +52,7 @@ class Navbar extends Component {
                   ]}
                 />
               )}
-            </p>
+            
           </div>
           {this.props.currentUser.isAuthenticated ? (
             <ul className="nav navbar-nav navbar-right">
