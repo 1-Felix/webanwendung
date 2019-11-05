@@ -1,0 +1,9 @@
+.card-username {
+    font-family: monospace;
+    background-color: $color-grey-light;
+}
+
+// Bootstrap überschreiben
+.card {
+    border-color: $color-primary;
+}
