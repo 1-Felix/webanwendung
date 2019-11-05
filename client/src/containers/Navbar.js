@@ -33,7 +33,7 @@ class Navbar extends Component {
                     1500,
                     "What a great choice! 😊",
                     800,
-                    "You can now write, edit and delete your messages. ✏", 500
+                    "You can now write, edit and delete your messages. 📃", 500
                   ]}
                 />
               ) : (
@@ -65,7 +65,7 @@ class Navbar extends Component {
               </li>
               <li>
                 {/* Wenn sich ausgeloggt wird, wird der Token im LocalStorage gelöscht.*/}
-                <a onClick={this.logout}>Log out</a>
+                <a className="link-logout" onClick={this.logout}>Log out</a>
               </li>
             </ul>
           ) : (
