@@ -1,21 +1,38 @@
-import React from 'react';
-import {Provider} from "react-redux";
-import {configureStore} from "../store"
+import React from "react";
+import { Provider } from "react-redux";
+import { configureStore } from "../store";
 // Um von Seite zu Seite zu navigieren
-import {BrowserRouter as Router} from "react-router-dom";
-import Navbar from "./Navbar"
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./Navbar";
 import Main from "./Main";
-
+import { setAuhorizationToken, setCurrentUser } from "../store/actions/auth";
+import jwtDecode from "jwt-decode";
 
 const store = configureStore();
+
+// Wenn die Seite neu aufgerufen wird, und der Token noch im localStorage ist
+// Wird man wieder eingeloggt, und der Token wird mit jedem Request mitgesendet.
+if (localStorage.jwtToken) {
+  setAuhorizationToken(localStorage.jwtToken);
+  // Um jemanden davon abzuhalten den Token im LocalStorage zu verfälschen
+  try {
+    // jwtDecode gibt den Payload (also die User-Daten) zurück
+    // Diese werden anhand des Tokens im localStorage dekodiert.
+    store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)))
+  } 
+  // Wenn der Token invalide ist, wird der User ausgeloggt.
+  catch (e) {
+    store.dispatch(setCurrentUser({}));
+  }
+}
 
 const App = () => (
   <Provider store={store}>
     <Router>
-        <Navbar />
-        <Main />
+      <Navbar />
+      <Main />
     </Router>
   </Provider>
-)
+);
 
 export default App;

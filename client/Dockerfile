@@ -6,7 +6,7 @@ WORKDIR /client
 COPY package*.json /client/
 # install dependencies
 RUN npm install --quiet
-
+# Node-Sass muss an den Linux-Container angepasst werden
 RUN npm rebuild node-sass
 # Copy the current directory contents into the container at /client
 COPY . /client/

@@ -1,5 +1,7 @@
-import { apiCall } from "../../services/api";
+import { apiCall, setTokenHeader } from "../../services/api";
 import { SET_CURRENT_USER } from "../actionTypes";
+import { addError, removeError } from "./errors";
+
 
 export function setCurrentUser(user) {
   // Das wird an Reducer gesendet
@@ -7,6 +9,21 @@ export function setCurrentUser(user) {
     type: SET_CURRENT_USER,
     user
   };
+}
+
+export function setAuhorizationToken(token){
+  setTokenHeader(token);
+}
+
+export function logout(){
+  return dispatch => {
+    // Der User-Token wird im LocalStorage gelöscht
+    localStorage.clear();
+    // false -> führt zum else-statement, der den Token im Header wieder löscht.
+    setAuhorizationToken(false)
+    // Der currentUser wird auf ein leere Objekt gesetzt
+    dispatch(setCurrentUser({}));
+  }
 }
 
 // Type ist entweder "signup" oder "signin"
@@ -20,10 +37,20 @@ export function authUser(type, userData) {
         .then(({ token, ...user }) => {
           // Von meiner API kommt ein User-Objekt zurück mit token, username etc.
           localStorage.setItem("jwtToken", token);
+          // Wenn der User eingeloggt ist, sende den Authoriation Header mit jedem zukünftigen Request
+          setAuhorizationToken(token);
           // Hier wird der User im Redux-Store erstellt
           // damit das Front-End etwas mit den Daten anfangen kann
           dispatch(setCurrentUser(user));
+          // Wenn noch vorherige Erros da sind
+          dispatch(removeError());
           resolve();
+        })
+        .catch(err => {
+          // Wenn es ein Error gibt
+          // err.message kommt vom Server im Error-Objekt<
+          dispatch(addError(err.message));
+          reject(); // Wenn API Aufruf fehlschlägt 
         });
     });
   };

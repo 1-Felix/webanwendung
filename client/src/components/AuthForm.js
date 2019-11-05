@@ -24,20 +24,42 @@ export default class AuthForm extends Component {
     e.preventDefault();
     // auhthTpe ist nützlich um zu entscheiden was für ein Request abgeschickt werden soll
     const authType = this.props.signUp ? "signup" : "signin";
-    this.props.onAuth(authType, this.state).then(() => {
-      console.log("logged in")
-    })
-  }
+    this.props
+      .onAuth(authType, this.state)
+      .then(() => {
+        // Wenn der User eingeloggt ist
+        // "/" rendert die Homepage-Komponente neu
+        this.props.history.push("/")
+      })
+      .catch(() => {
+        return;
+      });
+  };
 
   render() {
-    const { email, username, password, profileImageUrl } = this.state;
-    const { heading, buttonText, signUp } = this.props;
+    const { email, username, profileImageUrl } = this.state;
+    const {
+      heading,
+      buttonText,
+      signUp,
+      errors,
+      history,
+      removeError
+    } = this.props;
+
+    // Sobald ein sich die URL ändert, wird die Error-Anzeige gelöscht
+    history.listen(() => removeError());
+
     return (
       <div>
         <div className="row justify-content-md-center text-center">
           <div className="col-md-6">
             <form onSubmit={this.handleSubmit}>
               <h2>{heading}</h2>
+              {/* Falls es Errors gibt, hier anzeigen */}
+              {errors.message && (
+                <div className="alert alert-danger">{errors.message}</div>
+              )}
               <label htmlFor="email">Email:</label>
               <input
                 type="text"
@@ -78,7 +100,10 @@ export default class AuthForm extends Component {
                   />
                 </div>
               )}
-              <button type="submit" className="btn btn-dark btn-block btn-lg mt-3">
+              <button
+                type="submit"
+                className="btn btn-dark btn-block btn-lg mt-3"
+              >
                 {buttonText}
               </button>
             </form>
