@@ -28,7 +28,7 @@ const MessageItem = ({ date, profileImageUrl, text, username, userId, messageId,
         {/* Die Buttons sollen nur angezeigt werden, wenn es die Nachrichten vom User sind. */}
         {isCorrectUser && (
           <div className="message-buttons">
-            <a className="btn btn-danger mr-3" onClick={removeMessage}>Delete</a>
+            <button className="btn btn-danger mr-3" onClick={removeMessage}>Delete</button>
             <Link className="btn btn-dark" to={{
               pathname: `/users/${userId}/messages/${messageId}/update`,
             }}>Update</Link>

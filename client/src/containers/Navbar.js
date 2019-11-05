@@ -65,7 +65,7 @@ class Navbar extends Component {
               </li>
               <li>
                 {/* Wenn sich ausgeloggt wird, wird der Token im LocalStorage gelöscht.*/}
-                <a className="link-logout" onClick={this.logout}>Log out</a>
+                <Link to="/" className="link-logout" onClick={this.logout}>Log out</Link>
               </li>
             </ul>
           ) : (
