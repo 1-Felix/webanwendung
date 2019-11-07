@@ -14,33 +14,48 @@ class MessageForm extends Component {
   handleNewSubmit = e => {
     e.preventDefault();
     // Check ob man eine Nachricht updaten, oder neu erstellen möchte
-    if(this.props.match.params.message_id){
+    if (this.props.match.params.message_id) {
       // Führt den PUT-Request aus, um eine Nachricht zu ändern
-      this.props.updateMessage(this.props.match.params.id, this.props.match.params.message_id, this.state.message);
+      this.props.updateMessage(
+        this.props.match.params.id,
+        this.props.match.params.message_id,
+        this.state.message
+      );
     } else {
       // Führt den POST-Request aus, um eine Nachricht zu erstellen
       this.props.createNewMessage(this.state.message);
     }
-    this.setState({message: ""});
-    this.props.history.push("/")
+    this.setState({ message: "" });
+    this.props.history.push("/");
+  };
 
+  style = {
+    backgroundColor: "#1E1E1E",
+    color: "#a3a3a3"
   };
 
   render() {
     return (
-      <form onSubmit={this.handleNewSubmit}>
-        {/* {this.props.errors.message && (
+      <form
+        onSubmit={this.handleNewSubmit}
+        className="align-items-center d-flex flex-column"
+      >
+        <div className="w-50">
+          <p className="inputTitle">Create a new message:</p>
+          {/* {this.props.errors.message && (
           <div className="alert alert-danger">{this.props.errors.message}</div>
         )} */}
-        <input
-          type="text"
-          className="form-control"
-          value={this.state.message}
-          onChange={e => this.setState({message: e.target.value})}
-        />
-        <button type="submit" className="btn btn-dark">
-            Submit my Idea
-        </button>
+          <input
+            type="text"
+            className="form-control mb-3"
+            style={this.style}
+            value={this.state.message}
+            onChange={e => this.setState({ message: e.target.value })}
+          />
+          <button type="submit" className="btn btn-dark">
+            Submit my idea
+          </button>
+        </div>
       </form>
     );
   }

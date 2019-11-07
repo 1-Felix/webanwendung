@@ -38,9 +38,16 @@ html{
 
 body {
 	box-sizing: border-box;
-	background-color: $color-grey-dark;
 }
 
 #root {
 	background-color: $color-grey-dark;
+}
+
+.btn {
+	background-color: $color-grey-light;
+}
+
+.btn:hover {
+	background-color: darken($color: $color-grey-light, $amount: 2);
 }

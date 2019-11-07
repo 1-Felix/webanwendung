@@ -1,4 +1,4 @@
-@import "~bootstrap";
+// @import "~bootstrap";
 // compileCompressed: ../css/index.min.css
 @import "abstracts/functions";
 @import "abstracts/mixins";
@@ -12,6 +12,8 @@
 @import "components/LandingPage";
 @import "components/MessageList";
 @import "components/UserAside";
+@import "components/MessageForm";
+@import "components/AuthForm";
 
 @import "layout/Navbar";
 
