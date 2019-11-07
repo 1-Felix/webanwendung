@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// https://create-react-app.dev/docs/adding-bootstrap/
+import 'bootstrap/dist/css/bootstrap.css';
 import './sass/index.scss';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';

@@ -31,6 +31,9 @@
 .username {
     color: $color-primary;
 }
+.username:hover {
+    color: $color-secondary;
+}
 
 // Bootstrap überschreiben
 

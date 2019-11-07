@@ -51,25 +51,25 @@ export default class AuthForm extends Component {
     history.listen(() => removeError());
 
     return (
-      <div>
-        <div className="row justify-content-md-center text-center">
+      <div className="authFormContainer">
+        <div className="row h-100 justify-content-md-center text-center align-items-center">
           <div className="col-md-6">
-            <form onSubmit={this.handleSubmit}>
-              <h2>{heading}</h2>
+            <form onSubmit={this.handleSubmit} className="d-flex justify-content-left flex-column">
+              <h2 className="formTitle">{heading}</h2>
               {/* Falls es Errors gibt, hier anzeigen */}
               {errors.message && (
                 <div className="alert alert-danger">{errors.message}</div>
               )}
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email" className="align-self-start" >Email:</label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 id="email"
                 className="form-control"
                 onChange={this.handleChange}
                 value={email}
               />
-              <label htmlFor="password">Password:</label>
+              <label htmlFor="password" className="align-self-start">Password:</label>
               <input
                 type="password"
                 name="password"
@@ -79,8 +79,8 @@ export default class AuthForm extends Component {
               />
               {/* Wenn props.signup existiert, dann zeige die zwei weiteren Input-Felder an */}
               {signUp && (
-                <div>
-                  <label htmlFor="Username">Username:</label>
+                <div className="d-flex flex-column">
+                  <label htmlFor="Username" className="align-self-start">Username:</label>
                   <input
                     type="text"
                     name="username"
@@ -89,7 +89,7 @@ export default class AuthForm extends Component {
                     value={username}
                     onChange={this.handleChange}
                   />
-                  <label htmlFor="image-url">Image-URL:</label>
+                  <label htmlFor="image-url" className="align-self-start">Image-URL:</label>
                   <input
                     type="text"
                     name="profileImageUrl"
