@@ -18,7 +18,7 @@ const Main = props => {
     <div className="container">
       {/* Erlaubt mehrere Routes */}
       <Switch>
-        {/* Triggert nur wenn an genau auf der Root-Route ist */}
+        {/* Triggert nur wenn man genau auf der Root-Route ist */}
         {/* Es wird eine Funktion gerendert, die die Hompage rendert und die Props für's Routing übergibt */}
         <Route exact path="/" render={props => <Homepage currentUser={currentUser} {...props} />} />
         <Route
