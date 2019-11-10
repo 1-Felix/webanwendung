@@ -12,7 +12,7 @@ export function setTokenHeader(token){
 }
 
 // Ein Wrapper um den axios API Call, der Errors etc formatiert
-// method -> der HTTTP-Request-Typ (z.b. POST/GET)
+// method -> die HTTTP-Methode (z.b. POST/GET)
 // path -> Der Pfad / Endpoint
 // data (optional) Daten in JSON form für POST Requests
 export function apiCall(method, path, data) {

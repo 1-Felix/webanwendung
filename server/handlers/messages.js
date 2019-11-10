@@ -43,7 +43,9 @@ exports.getMessage = async function(req, res, next) {
 
 exports.deleteMessage = async function(req, res, next) {
     try {
+        // Die Nachricht anhand der ID finden 
         let foundMessage = await db.Message.findById(req.params.message_id);
+        // Nachricht löschen
         await foundMessage.remove();
         return res.status(200).json(foundMessage);
     } catch (err) {
