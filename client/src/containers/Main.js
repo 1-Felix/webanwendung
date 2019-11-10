@@ -14,6 +14,7 @@ const Main = props => {
   // Durch MapDispatchToProps habe ich Zugriff auf props.authUser
   // authUser dispached eine action (siehe ../store/actions/auth)
   const { authUser, errors, removeError, currentUser } = props;
+  const UpdateForm = withAuth(MessageForm);
   return (
     <div className="container">
       {/* Erlaubt mehrere Routes */}
@@ -56,7 +57,19 @@ const Main = props => {
         />
         {/* Wird nur agzeigt wenn der User eingeloggt ist  */}
         <Route path="/users/:id/messages/new" component={withAuth(MessageForm)} />
-        <Route path="/users/:id/messages/:message_id/update" component={withAuth(MessageForm)} />
+        <Route 
+          path="/users/:id/messages/:message_id/update" 
+          render={props => {
+            return (
+              <UpdateForm
+              update
+              heading="Update your Message:"
+              btnText="Update my idea"
+              {...props}
+              />
+            );
+          }}
+        />
       </Switch>
     </div>
   );
