@@ -16,11 +16,7 @@ const Homepage = ({ currentUser }) => {
             <span>the world?</span>
           </h1>
         </div>
-        <div className="col d-flex justify-content-center">
-          <Link to="/signup" className="btn btn-dark">
-            Hier Registrieren
-          </Link>
-        </div>
+        <div className="col"></div>
         <div className="col">
           <h4 className="header-subtitle">
             <span>Share it</span>
