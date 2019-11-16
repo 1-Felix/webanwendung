@@ -35,13 +35,22 @@ class MessageForm extends Component {
   };
 
   render() {
+    // Props sind für das Update-Formular (siehe Main.js)
+    const { update, heading, btnText } = this.props;
     return (
       <form
         onSubmit={this.handleNewSubmit}
         className="align-items-center d-flex flex-column"
       >
         <div className="w-50">
-          <p className="inputTitle">Create a new message:</p>
+          {/* Wenn der User eine Nachricht erstellen möchte */}
+          {!update && (
+            <p className="inputTitle">Create a new message:</p>
+          )}
+          {/* Wenn der User eine Nachricht bearbeiten möchte */}
+          {update && (
+            <p className="inputTitle">{heading}</p>
+          )}
           {/* {this.props.errors.message && (
           <div className="alert alert-danger">{this.props.errors.message}</div>
         )} */}
@@ -52,9 +61,16 @@ class MessageForm extends Component {
             value={this.state.message}
             onChange={e => this.setState({ message: e.target.value })}
           />
-          <button type="submit" className="btn btn-dark">
-            Submit my idea
-          </button>
+          {!update && (
+            <button type="submit" className="btn btn-dark">
+              Submit my idea
+            </button>
+          )}
+          {update && (
+            <button type="submit" className="btn btn-dark">
+              {btnText}
+            </button>
+          )}
         </div>
       </form>
     );
